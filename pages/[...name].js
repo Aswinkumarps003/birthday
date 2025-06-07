@@ -7,33 +7,65 @@ import messages from "../utils/birthdayWishes.js";
 import useTheme from "../hooks/useTheme";
 import * as htmlToImage from "html-to-image";
 import FileSaver from "file-saver";
-import { Button, CopyLinkButton } from "../components";
+import { Button } from "../components";
 
-const Wish = ({ history }) => {
+const Wish = () => {
 	const router = useRouter();
 	const { name } = router.query; // gets both name & color id in form of array [name,colorId]
 	const color = name ? name[1] : 0; //extracting colorId from name
 	const [downloading, setDownloading] = useState(false);
 	const [downloadedOnce, setDownloadedOnce] = useState(false);
 	const audioRef = useRef();
+	const [isClient, setIsClient] = useState(false);
+	const [randomMessage, setRandomMessage] = useState("");
 
 	const { setTheme } = useTheme();
 
+	// Initialize client-side state
 	useEffect(() => {
+		setIsClient(true);
+		const randomMsg = messages[randomNumber(0, messages.length)].value;
+		setRandomMessage(randomMsg);
+	}, []);
+
+	// Handle theme and effects
+	useEffect(() => {
+		if (!isClient) return;
+
 		// Theme Change
 		setTheme(color);
 
 		if (downloading === false) {
 			// Confetti
-			const confettiSettings = {
-				target: "canvas",
-				start_from_edge: true,
-			};
-			const confetti = new ConfettiGenerator(confettiSettings);
-			confetti.render();
-			audioRef.current.play();
+			const canvas = document.getElementById("canvas");
+			if (canvas) {
+				const confettiSettings = {
+					target: "canvas",
+					max: 60,
+					size: 0.8,
+					animate: true,
+					props: ["circle", "square", "triangle", "line"],
+					colors: [[255, 0, 0], [255, 50, 50], [255, 100, 100], [255, 150, 150]],
+					clock: 200,
+					rotate: true,
+					start_from_edge: false,
+					respawn: true,
+					drift: 0,
+					gravity: 0.1,
+					scalar: 0.2
+				};
+				const confetti = new ConfettiGenerator(confettiSettings);
+				confetti.render();
+			}
+
+			// Audio
+			if (audioRef.current) {
+				audioRef.current.play().catch(error => {
+					console.log("Audio autoplay failed:", error);
+				});
+			}
 		}
-	}, [color, downloading]);
+	}, [color, downloading, isClient, setTheme]);
 
 	useEffect(() => {
 		if (downloading === true && downloadedOnce === false) {
@@ -50,10 +82,8 @@ const Wish = ({ history }) => {
 		if (downloadedOnce === true) return;
 
 		const node = document.getElementById("image");
-
 		if (node) {
 			setDownloadedOnce(true);
-
 			htmlToImage.toPng(node).then((blob) => {
 				FileSaver.saveAs(blob, "birthday-wish.png");
 				setDownloading(false);
@@ -61,8 +91,9 @@ const Wish = ({ history }) => {
 		}
 	};
 
-	const title = (name) => {
-		const wish = "Happy Birthday " + name + "!";
+	const title = () => {
+		const name = "Keerthana";
+		const wish = "Happy Birthday "+name+" !";
 		const base_letters = [];
 		const name_letters = [];
 
@@ -104,18 +135,19 @@ const Wish = ({ history }) => {
 		);
 	};
 
+	if (!isClient) {
+		return null;
+	}
+
 	if (downloading) {
 		return (
 			<div className={styles.containerImg} id="image" onClick={downloadImage}>
-				{downloadImage()}
 				<main className={styles.image}>
 					<div>
 						<div className={styles.main}>{title(name && name[0])}</div>
-
 						<div style={{ height: 40 }} />
-
 						<p className={styles.descImg}>
-							{messages[randomNumber(0, messages.length)].value}
+							{randomMessage}
 						</p>
 						<p className={styles.descImg}>
 							Happy Birthday, Keerthana 🎂✨<br />
@@ -135,10 +167,10 @@ const Wish = ({ history }) => {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Happy Birthday {name && name[0]}</title>
+				<title>Happy Birthday Keerthana</title>
 				<meta
 					name="description"
-					content={`A surprise birthday wish!`}
+					content="A surprise birthday wish!"
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -149,7 +181,7 @@ const Wish = ({ history }) => {
 				<div>
 					<div className={styles.main}>{title(name && name[0])}</div>
 					<p className={styles.desc}>
-						{messages[randomNumber(0, messages.length)].value}
+						{randomMessage}
 					</p>
 					<p className={styles.desc}>
 						Happy Birthday, Keerthana 🎂✨<br />
@@ -163,17 +195,13 @@ const Wish = ({ history }) => {
 				</div>
 
 				<div className={styles.buttonContainer}>
-					{history[0] == "/" ? (
-						<Button
-							onClick={() => {
-								setDownloadedOnce(false);
-								setDownloading(true);
-							}}
-							text="Download as Image"
-						/>
-					) : (
-						""
-					)}
+					<Button
+						onClick={() => {
+							setDownloadedOnce(false);
+							setDownloading(true);
+						}}
+						text="Download as Image"
+					/>
 				</div>
 			</main>
 			<audio ref={audioRef} id="player" autoPlay>

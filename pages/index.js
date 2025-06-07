@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create a Birthday Wish</title>
+        <title>Birthday Wish for Keerthana</title>
         <meta name="description" content="An app to generate birthday wishes :)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
