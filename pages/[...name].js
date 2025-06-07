@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Name.module.css";
 import { useRouter } from "next/router";
@@ -10,7 +10,6 @@ const Wish = () => {
   const router = useRouter();
   const { name } = router.query;
   const color = name ? name[1] : 0;
-  const audioRef = useRef();
   const [isClient, setIsClient] = useState(false);
   const [randomMessage, setRandomMessage] = useState("");
 
@@ -51,12 +50,6 @@ const Wish = () => {
       };
       const confetti = new ConfettiGenerator(confettiSettings);
       confetti.render();
-    }
-
-    if (audioRef.current) {
-      audioRef.current.play().catch((error) => {
-        console.log("Audio autoplay failed:", error);
-      });
     }
   }, [color, isClient, setTheme]);
 
@@ -125,9 +118,6 @@ const Wish = () => {
           </p>
         </div>
       </main>
-      <audio ref={audioRef} id="player" autoPlay>
-        <source src="media/hbd.mp3" />
-      </audio>
     </div>
   );
 };
