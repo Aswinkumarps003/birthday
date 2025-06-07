@@ -113,24 +113,15 @@ const Wish = () => {
       <main className={styles.animate}>
         <div>
           <div className={styles.main}>{title(name && name[0])}</div>
-          <p className={styles.desc}>{randomMessage}</p>
           <p className={styles.desc}>
-            Happy Birthday, Keerthana 🎂✨
-            <br />
-            Another year older wiser… and somehow still rolling on the bed
-            (weird thing i learned from u)
-            <br />
-            Hehe u've been through so much with such silent strength
-            <br />
-            U don't always say it but the way u hold things together the way u
-            keep going
-            <br />
-            It's something I admire more than I can put into words
-            <br />
-            U deserve peace laughter and again peace and laughter
-            <br />
-            And don't forget the Lotus Biscoff 😤 I'll always be rooting for u
-          </p>
+  Happy Birthday, Keerthana 🎂✨<br />
+  Another year older wiser… and somehow still rolling on the bed (weird thing i learned from u)<br />
+  Hehe u&apos;ve been through so much with such silent strength<br />
+  U don&apos;t always say it but the way u hold things together the way u keep going<br />
+  It&apos;s something I admire more than I can put into words<br />
+  U deserve peace laughter and again peace and laughter<br />
+  And don&apos;t forget the Lotus Biscoff 😤 I&apos;ll always be rooting for u
+</p>
         </div>
       </main>
       <audio ref={audioRef} id="player" autoPlay>
