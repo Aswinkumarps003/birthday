@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--openssl-legacy-provider' next dev",
     "build": "next build",
     "export": "next build && next export",
-    "start": "next start",
+    "start": "cross-env NODE_OPTIONS='--openssl-legacy-provider' next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "react-use": "^17.3.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2"
   }

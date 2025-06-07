@@ -117,6 +117,15 @@ const Wish = ({ history }) => {
 						<p className={styles.descImg}>
 							{messages[randomNumber(0, messages.length)].value}
 						</p>
+						<p className={styles.descImg}>
+							Happy Birthday, Keerthana 🎂✨<br />
+							Another year older wiser… and somehow still rolling on the bed (weird thing i learned from u)<br />
+							Hehe u've been through so much with such silent strength<br />
+							U don't always say it but the way u hold things together the way u keep going<br />
+							It's something I admire more than I can put into words<br />
+							U deserve peace laughter and again peace and laughter<br />
+							And don't forget the Lotus Biscoff 😤 I'll always be rooting for u
+						</p>
 					</div>
 				</main>
 			</div>
@@ -142,11 +151,18 @@ const Wish = ({ history }) => {
 					<p className={styles.desc}>
 						{messages[randomNumber(0, messages.length)].value}
 					</p>
+					<p className={styles.desc}>
+						Happy Birthday, Keerthana 🎂✨<br />
+						Another year older wiser… and somehow still rolling on the bed (weird thing i learned from u)<br />
+						Hehe u've been through so much with such silent strength<br />
+						U don't always say it but the way u hold things together the way u keep going<br />
+						It's something I admire more than I can put into words<br />
+						U deserve peace laughter and again peace and laughter<br />
+						And don't forget the Lotus Biscoff 😤 I'll always be rooting for u
+					</p>
 				</div>
 
 				<div className={styles.buttonContainer}>
-					{history[0] == "/" ? <CopyLinkButton /> : ""}
-
 					{history[0] == "/" ? (
 						<Button
 							onClick={() => {
@@ -158,11 +174,6 @@ const Wish = ({ history }) => {
 					) : (
 						""
 					)}
-
-					<Button
-						onClick={() => router.push("/")}
-						text="&larr; Create a wish"
-					/>
 				</div>
 			</main>
 			<audio ref={audioRef} id="player" autoPlay>
