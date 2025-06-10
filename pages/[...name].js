@@ -111,23 +111,23 @@ const Wish = () => {
             Happy Birthday, Keerthana 🎂✨
             <br />
             Another year another chapter growing wiser stronger… and still
-            somehow rolling on the bed (a habit I’ve picked up too for reasons
-            even I can't explain 😄)
+            somehow rolling on the bed (a habit I&apos;ve picked up too for
+            reasons even I can&apos;t explain 😄)
             <br />
             <br />
-            U’ve handled so much with quiet strength and resilience and that
-            calm perseverance says more than words ever could
+            U&apos;ve handled so much with quiet strength and resilience and
+            that calm perseverance says more than words ever could
             <br />
             U truly deserve peace laughter and again peace and laughter hehe 😊
             <br />
             And dont forget the Lotus Biscoff 😤
             <br />
             <br />
-            Your dedication to your goals MD, research and FRCS is
-            something I genuinely admire
+            Your dedication to your goals MD, research and FRCS is something I
+            genuinely admire
             <br />
             <br />
-            Always wishing u the best in every step ahead and just know I'm
+            Always wishing u the best in every step ahead and just know I&apos;m
             around if ever u need a hand okay
           </p>
         </div>
