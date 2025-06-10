@@ -110,7 +110,7 @@ const Wish = () => {
           <p className={styles.desc}>
             Happy Birthday, Keerthana 🎂✨
             <br />
-            Another year another chapter—growing wiser stronger… and still
+            Another year another chapter growing wiser stronger… and still
             somehow rolling on the bed (a habit I’ve picked up too for reasons
             even I can't explain 😄)
             <br />
@@ -118,12 +118,12 @@ const Wish = () => {
             U’ve handled so much with quiet strength and resilience and that
             calm perseverance says more than words ever could
             <br />
-            U truly deserve peace laughter—and all the little joys in between
+            U truly deserve peace laughter and again peace and laughter hehe 😊
             <br />
             And dont forget the Lotus Biscoff 😤
             <br />
             <br />
-            Your dedication to your goals whether it’s MD research or FRCS is
+            Your dedication to your goals MD, research and FRCS is
             something I genuinely admire
             <br />
             <br />
